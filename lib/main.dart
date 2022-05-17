@@ -73,7 +73,11 @@ class _Counter2State extends State<Counter2> {
 void main() {
   runApp(
     MaterialApp(
+      title: 'Simple Dart Counter for 2 ppl.',
       home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Dart Counter'),
+        ),
         body: Container(
           margin:
               const EdgeInsets.symmetric(vertical: 250.0, horizontal: 150.0),
