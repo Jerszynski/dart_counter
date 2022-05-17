@@ -52,14 +52,49 @@ class _Counter2State extends State<Counter2> {
     });
   }
 
+  void _decrement() {
+    setState(() {
+      if (_counter2 != 0) {
+        _counter2--;
+      } else {
+        _counter2 = 0;
+      }
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      _counter2 = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        ElevatedButton(
-          onPressed: _increment,
-          child: const Text('Increment'),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: ElevatedButton(
+                onPressed: _increment,
+                child: const Text('Increment'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: ElevatedButton(
+                onPressed: _decrement,
+                child: const Text('Decrement'),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _reset,
+              child: const Text('Reset'),
+            ),
+          ],
         ),
         const SizedBox(width: 16),
         Text('Count: $_counter2'),
@@ -80,10 +115,10 @@ void main() {
         ),
         body: Container(
           margin:
-              const EdgeInsets.symmetric(vertical: 250.0, horizontal: 150.0),
+              const EdgeInsets.symmetric(vertical: 200.0, horizontal: 100.0),
           color: const Color.fromARGB(255, 244, 244, 244),
-          width: 200,
-          height: 200,
+          width: 800,
+          height: 400,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: const [
