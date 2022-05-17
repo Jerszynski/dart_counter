@@ -1,17 +1,8 @@
-# widgets
+# Welcome
 
-A new Flutter project.
+In this dart_counter app you will find a simple solution to count sets beetween two players. 
 
-## Getting Started
+_____
+It is my first app so propably there will be some mistakes. 
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# dart_counter
+Thank you for your attention :)
