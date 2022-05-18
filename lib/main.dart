@@ -20,11 +20,7 @@ class _Player1State extends State<Player1> {
 
   void _decrement() {
     setState(() {
-      if (_Player1Counter != 0) {
-        _Player1Counter--;
-      } else {
-        _Player1Counter = 0;
-      }
+      _Player1Counter != 0 ? _Player1Counter-- : _Player1Counter = 0;
     });
   }
 
@@ -89,11 +85,7 @@ class _Player2State extends State<Player2> {
 
   void _decrement() {
     setState(() {
-      if (_Player2Counter != 0) {
-        _Player2Counter--;
-      } else {
-        _Player2Counter = 0;
-      }
+      _Player2Counter != 0 ? _Player2Counter-- : _Player2Counter = 0;
     });
   }
 
@@ -152,16 +144,12 @@ void main() {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
-              // margin: const EdgeInsets.symmetric(
-              //     vertical: 200.0, horizontal: 100.0),
               color: const Color.fromARGB(255, 244, 244, 244),
               width: 300,
               height: 150,
               child: const Player1(),
             ),
             Container(
-              // margin: const EdgeInsets.symmetric(
-              //     vertical: 200.0, horizontal: 100.0),
               color: const Color.fromARGB(255, 244, 244, 244),
               width: 300,
               height: 150,
