@@ -163,9 +163,9 @@ class _Player2State extends State<Player2> {
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 243, 111, 102)),
+                    const Color.fromARGB(255, 243, 111, 102)),
                 shadowColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 0, 0, 0)),
+                    const Color.fromARGB(255, 0, 0, 0)),
               ),
               onPressed: _reset,
               child: const Text('Reset'),
@@ -191,28 +191,22 @@ void main() {
           ),
           body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 244, 244, 244),
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 1,
-                        blurRadius: 15,
-                        offset: const Offset(4, 4),
-                      ),
-                    ],
-                  ),
                   width: 300,
-                  height: 150,
-                  child: const Player1(),
+                  child: const TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter player name'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 244, 244, 244),
+                    color: const Color.fromARGB(255, 244, 244, 244),
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                     boxShadow: [
                       BoxShadow(
@@ -224,7 +218,38 @@ void main() {
                     ],
                   ),
                   width: 300,
-                  height: 150,
+                  height: 180,
+                  child: const Player1(),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  width: 300,
+                  child: const TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter player name'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 244, 244, 244),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 15,
+                        offset: const Offset(4, 4),
+                      ),
+                    ],
+                  ),
+                  width: 300,
+                  height: 180,
                   child: const Player2(),
                 ),
               ],
