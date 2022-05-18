@@ -41,6 +41,13 @@ class _Player1State extends State<Player1> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
                 onPressed: _increment,
                 child: const Text('Increment'),
               ),
@@ -48,11 +55,28 @@ class _Player1State extends State<Player1> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
                 onPressed: _decrement,
                 child: const Text('Decrement'),
               ),
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+                shadowColor: MaterialStateProperty.all(Colors.black),
+                elevation: MaterialStateProperty.all(10),
+              ),
               onPressed: _reset,
               child: const Text('Reset'),
             ),
@@ -106,6 +130,13 @@ class _Player2State extends State<Player2> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
                 onPressed: _increment,
                 child: const Text('Increment'),
               ),
@@ -113,11 +144,29 @@ class _Player2State extends State<Player2> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                ),
                 onPressed: _decrement,
                 child: const Text('Decrement'),
               ),
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Color.fromARGB(255, 243, 111, 102)),
+                shadowColor: MaterialStateProperty.all<Color>(
+                    Color.fromARGB(255, 0, 0, 0)),
+              ),
               onPressed: _reset,
               child: const Text('Reset'),
             ),
@@ -145,13 +194,35 @@ void main() {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  color: const Color.fromARGB(255, 244, 244, 244),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 244, 244, 244),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 15,
+                        offset: const Offset(4, 4),
+                      ),
+                    ],
+                  ),
                   width: 300,
                   height: 150,
                   child: const Player1(),
                 ),
                 Container(
-                  color: const Color.fromARGB(255, 244, 244, 244),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 244, 244, 244),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 1,
+                        blurRadius: 15,
+                        offset: const Offset(4, 4),
+                      ),
+                    ],
+                  ),
                   width: 300,
                   height: 150,
                   child: const Player2(),
