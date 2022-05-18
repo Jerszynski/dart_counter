@@ -137,35 +137,28 @@ void main() {
     MaterialApp(
       title: 'Simple Dart Counter for 2 ppl.',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Dart Counter'),
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Container(
-              color: const Color.fromARGB(255, 244, 244, 244),
-              width: 300,
-              height: 150,
-              child: const Player1(),
+          appBar: AppBar(
+            title: const Text('Dart Counter'),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  color: const Color.fromARGB(255, 244, 244, 244),
+                  width: 300,
+                  height: 150,
+                  child: const Player1(),
+                ),
+                Container(
+                  color: const Color.fromARGB(255, 244, 244, 244),
+                  width: 300,
+                  height: 150,
+                  child: const Player2(),
+                ),
+              ],
             ),
-            Container(
-              color: const Color.fromARGB(255, 244, 244, 244),
-              width: 300,
-              height: 150,
-              child: const Player2(),
-            ),
-          ],
-        ),
-
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //   children: const [
-        //     Counter1(),
-        //     Player2(),
-        //   ],
-        // ),
-      ),
+          )),
     ),
   );
 }
