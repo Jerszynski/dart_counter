@@ -1,6 +1,6 @@
 {
-    "name": "widgets",
-    "short_name": "widgets",
+    "name": "dart_counter",
+    "short_name": "dart_counter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
