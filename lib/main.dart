@@ -73,6 +73,10 @@ class _Player1State extends State<Player1> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.green[600]),
+                    shadowColor: MaterialStateProperty.all(Colors.black),
+                    elevation: MaterialStateProperty.all(10),
                   ),
                   onPressed: _increment,
                   child: const Text('Increment'),
@@ -87,6 +91,10 @@ class _Player1State extends State<Player1> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue[600]),
+                    shadowColor: MaterialStateProperty.all(Colors.black),
+                    elevation: MaterialStateProperty.all(10),
                   ),
                   onPressed: _decrement,
                   child: const Text('Decrement'),
@@ -187,6 +195,10 @@ class _Player2State extends State<Player2> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.green[600]),
+                    shadowColor: MaterialStateProperty.all(Colors.black),
+                    elevation: MaterialStateProperty.all(10),
                   ),
                   onPressed: _increment,
                   child: const Text('Increment'),
@@ -201,6 +213,10 @@ class _Player2State extends State<Player2> {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue[600]),
+                    shadowColor: MaterialStateProperty.all(Colors.black),
+                    elevation: MaterialStateProperty.all(10),
                   ),
                   onPressed: _decrement,
                   child: const Text('Decrement'),
@@ -245,15 +261,25 @@ void main() {
               Container(
                 width: 300,
                 child: TextField(
-                  autofocus: true,
+                  // autofocus: true,
                   decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(),
-                      ),
-                      prefixIcon: const Icon(Icons.person),
-                      hintText: 'Enter player name'),
+                    contentPadding: const EdgeInsets.all(2),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(),
+                    ),
+                    fillColor: Colors.grey[150],
+                    filled: true,
+                    prefixIcon: const Icon(Icons.person),
+                    hintText: 'Enter player name',
+                    hintStyle: const TextStyle(
+                      color: Colors.black26,
+                    ),
+                    labelText: 'Player 1',
+                    labelStyle: const TextStyle(
+                      color: Colors.black45,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -283,13 +309,23 @@ void main() {
                 width: 300,
                 child: TextField(
                   decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(2),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: const BorderSide(),
-                      ),
-                      prefixIcon: Icon(Icons.person),
-                      hintText: 'Enter player name'),
+                    contentPadding: const EdgeInsets.all(2),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(),
+                    ),
+                    fillColor: Colors.grey[150],
+                    filled: true,
+                    prefixIcon: const Icon(Icons.person),
+                    hintText: 'Enter player name',
+                    hintStyle: const TextStyle(
+                      color: Colors.black26,
+                    ),
+                    labelText: 'Player 2',
+                    labelStyle: const TextStyle(
+                      color: Colors.black45,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
