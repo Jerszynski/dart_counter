@@ -42,7 +42,7 @@ class _Player1State extends State<Player1> {
     ),
     backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
     shadowColor: MaterialStateProperty.all(Colors.black),
-    elevation: MaterialStateProperty.all(10),
+    elevation: MaterialStateProperty.all(5),
   );
 
   final textStyle = const TextStyle(

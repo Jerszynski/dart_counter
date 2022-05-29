@@ -82,15 +82,19 @@ class DartMain extends StatelessWidget {
       child: const Player2(),
     );
 
-    var scoreContainer = Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+    final buttonStyle = ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
       ),
-      height: 40,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: const Text('Scores'),
-      ),
+      backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+    );
+
+    var scoreContainer = ElevatedButton(
+      style: buttonStyle,
+      onPressed: () {},
+      child: const Text('Scores'),
     );
 
     return MaterialApp(
@@ -99,6 +103,9 @@ class DartMain extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Dart Counter'),
           centerTitle: true,
+          backgroundColor:
+              const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+          foregroundColor: Colors.black87,
         ),
         body: Stack(
           children: [
