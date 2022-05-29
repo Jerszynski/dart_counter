@@ -117,7 +117,7 @@ class DartMain extends StatelessWidget {
                 ),
               ),
               child: ListView(
-                padding: const EdgeInsets.all(60),
+                padding: const EdgeInsets.all(40),
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   firstPlayerTextField,
@@ -127,7 +127,7 @@ class DartMain extends StatelessWidget {
                   secondPlayerTextField,
                   const SizedBox(height: 10),
                   secondPLayerContainer,
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   scoreContainer,
                 ],
               ),
