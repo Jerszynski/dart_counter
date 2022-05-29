@@ -8,110 +8,83 @@ class Player1 extends StatefulWidget {
 }
 
 class _Player1State extends State<Player1> {
-  int _Player1Counter = 0;
-  int _Games1Counter = 0;
+  int player1Counter = 0;
+  int games1Counter = 0;
 
   void _increment() {
     setState(() {
-      _Player1Counter++;
-      if (_Player1Counter == 6) {
-        _Games1Counter++;
-        _Player1Counter = 0;
+      player1Counter++;
+      if (player1Counter == 3) {
+        games1Counter++;
+        player1Counter = 0;
       }
     });
   }
 
   void _decrement() {
     setState(() {
-      _Player1Counter != 0 ? _Player1Counter-- : _Player1Counter = 0;
+      player1Counter != 0 ? player1Counter-- : player1Counter = 0;
     });
   }
 
   void _reset() {
     setState(() {
-      _Player1Counter = 0;
-      _Games1Counter = 0;
+      player1Counter = 0;
+      games1Counter = 0;
     });
   }
+
+  final buttonStyle = ButtonStyle(
+    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+      RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    ),
+    backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+    shadowColor: MaterialStateProperty.all(Colors.black),
+    elevation: MaterialStateProperty.all(10),
+  );
+
+  final textStyle = const TextStyle(
+    fontSize: 24,
+    color: Colors.black87,
+  );
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
-              children: [
-                Text(
-                  'Games: $_Games1Counter',
-                  style: const TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                const SizedBox(
-                  width: 50,
-                ),
-                Text(
-                  'Sets: $_Player1Counter',
-                  style: const TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.green[600]),
-                    shadowColor: MaterialStateProperty.all(Colors.black),
-                    elevation: MaterialStateProperty.all(10),
-                  ),
-                  onPressed: _increment,
-                  child: const Text('Increment'),
-                ),
-                const SizedBox(
-                  width: 50,
-                ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                    ),
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blue[600]),
-                    shadowColor: MaterialStateProperty.all(Colors.black),
-                    elevation: MaterialStateProperty.all(10),
-                  ),
-                  onPressed: _decrement,
-                  child: const Text('Decrement'),
-                ),
-              ],
+            ElevatedButton(
+              style: buttonStyle,
+              onPressed: _increment,
+              child: const Text('Increment'),
             ),
             ElevatedButton(
-              style: ButtonStyle(
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                backgroundColor: MaterialStateProperty.all(Colors.red),
-                shadowColor: MaterialStateProperty.all(Colors.black),
-                elevation: MaterialStateProperty.all(10),
-              ),
+              style: buttonStyle,
+              onPressed: _decrement,
+              child: const Text('Decrement'),
+            ),
+            ElevatedButton(
+              style: buttonStyle,
               onPressed: _reset,
               child: const Text('Reset'),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'Games: $games1Counter',
+              style: textStyle,
+            ),
+            Text(
+              'Sets: $player1Counter',
+              style: textStyle,
             ),
           ],
         ),
