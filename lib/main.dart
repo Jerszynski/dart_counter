@@ -1,11 +1,17 @@
 import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
+import 'package:dart_counter/scores/scores.dart';
 import 'package:flutter/material.dart';
 
 //-------------------- APP
 
 void main() {
-  runApp(const DartMain());
+  runApp(
+    const MaterialApp(
+      title: 'Simple Dart Counter for 2 ppl.',
+      home: DartMain(),
+    ),
+  );
 }
 
 class DartMain extends StatelessWidget {
@@ -93,47 +99,51 @@ class DartMain extends StatelessWidget {
 
     var scoreContainer = ElevatedButton(
       style: buttonStyle,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Scores(),
+          ),
+        );
+      },
       child: const Text('Scores'),
     );
 
-    return MaterialApp(
-      title: 'Simple Dart Counter for 2 ppl.',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Dart Counter'),
-          centerTitle: true,
-          backgroundColor:
-              const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-          foregroundColor: Colors.black87,
-        ),
-        body: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("images/tlo.jpg"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: ListView(
-                padding: const EdgeInsets.all(40),
-                physics: const NeverScrollableScrollPhysics(),
-                children: [
-                  firstPlayerTextField,
-                  const SizedBox(height: 10),
-                  firstPlayerContainer,
-                  const SizedBox(height: 40),
-                  secondPlayerTextField,
-                  const SizedBox(height: 10),
-                  secondPLayerContainer,
-                  const SizedBox(height: 20),
-                  scoreContainer,
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dart Counter'),
+        centerTitle: true,
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        foregroundColor: Colors.black87,
+      ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/tlo.jpg"),
+                fit: BoxFit.cover,
               ),
             ),
-          ],
-        ),
+            child: ListView(
+              padding: const EdgeInsets.all(40),
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                firstPlayerTextField,
+                const SizedBox(height: 10),
+                firstPlayerContainer,
+                const SizedBox(height: 40),
+                secondPlayerTextField,
+                const SizedBox(height: 10),
+                secondPLayerContainer,
+                const SizedBox(height: 20),
+                scoreContainer,
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
