@@ -17,32 +17,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firstPlayerContainer = Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
-        border: Border.all(
-          width: 2,
-          color: Colors.black,
-        ),
-      ),
-      height: 180,
-      child: const Player1(),
-    );
-
-    final secondPLayerContainer = Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
-        border: Border.all(
-          width: 2,
-          color: Colors.black,
-        ),
-      ),
-      height: 180,
-      child: const Player2(),
-    );
-
     final buttonStyle = ButtonStyle(
       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
         RoundedRectangleBorder(
@@ -88,11 +62,11 @@ class HomePage extends StatelessWidget {
               children: [
                 const TextFields('Player 1'),
                 const SizedBox(height: 10),
-                firstPlayerContainer,
+                const PlayerContainer(Player1()),
                 const SizedBox(height: 40),
                 const TextFields('Player 2'),
                 const SizedBox(height: 10),
-                secondPLayerContainer,
+                const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
                 scoreContainer,
               ],
@@ -100,6 +74,31 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class PlayerContainer extends StatelessWidget {
+  const PlayerContainer(
+    this.playerContainer, {
+    Key? key,
+  }) : super(key: key);
+
+  final dynamic playerContainer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        border: Border.all(
+          width: 2,
+          color: Colors.black,
+        ),
+      ),
+      height: 180,
+      child: playerContainer,
     );
   }
 }
@@ -115,7 +114,6 @@ class TextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // autofocus: true,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(2),
         enabledBorder: OutlineInputBorder(
