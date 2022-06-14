@@ -26,19 +26,6 @@ class HomePage extends StatelessWidget {
       backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
     );
 
-    var scoreContainer = ElevatedButton(
-      style: buttonStyle,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Scores(),
-          ),
-        );
-      },
-      child: const Text('Scores'),
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dart Counter'),
@@ -68,12 +55,37 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
-                scoreContainer,
+                ScoreContainer(buttonStyle),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class ScoreContainer extends StatelessWidget {
+  const ScoreContainer(
+    this.buttonStyle, {
+    Key? key,
+  }) : super(key: key);
+
+  final ButtonStyle buttonStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: buttonStyle,
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Scores(),
+          ),
+        );
+      },
+      child: const Text('Scores'),
     );
   }
 }
