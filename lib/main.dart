@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/tlo.jpg"),
+                image: AssetImage("images/background.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -55,12 +55,31 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
+                SaveScore(buttonStyle),
                 ScoreContainer(buttonStyle),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class SaveScore extends StatelessWidget {
+  const SaveScore(
+    this.buttonStyle, {
+    Key? key,
+  }) : super(key: key);
+
+  final ButtonStyle buttonStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: buttonStyle,
+      onPressed: () {},
+      child: const Text('Save Scores'),
     );
   }
 }

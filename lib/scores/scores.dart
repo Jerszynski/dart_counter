@@ -5,23 +5,42 @@ class Scores extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final buttonStyle = ButtonStyle(
+      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      ),
+      backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Scores'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Here will be scores!'),
-            ElevatedButton(
-              child: const Text('Back to Main!'),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: const Icon(Icons.keyboard_backspace_rounded),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.green,
+        child: Container(
+          height: 50.0,
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.all(10),
+            color: Colors.grey,
+            child: const Text('Here will be scores!'),
+          ),
+        ],
       ),
     );
   }
