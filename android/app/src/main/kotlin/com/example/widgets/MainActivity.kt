@@ -1,4 +1,4 @@
-package com.example.dart_counter
+package com.krzysztof.jerszynski.dart_counter
 
 import io.flutter.embedding.android.FlutterActivity
 

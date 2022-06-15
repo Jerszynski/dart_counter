@@ -2,8 +2,14 @@ import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
 import 'package:dart_counter/scores/scores.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     const MaterialApp(
       title: 'Simple Dart Counter for 2 ppl.',

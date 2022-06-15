@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dart_counter">
+    package="com.krzysztof.jerszynski.dart_counter">
    <application
         android:label="dart_counter"
         android:name="${applicationName}"

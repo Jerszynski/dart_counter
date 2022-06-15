@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "694959769656",
+    "project_id": "dart-counter-bd799",
+    "storage_bucket": "dart-counter-bd799.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694959769656:android:cfc0e287f63952488a3ecd",
+        "android_client_info": {
+          "package_name": "com.krzysztof.jerszynski.dart_counter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694959769656-70ov83infnt7nlivc5nefto79or6o84j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM4HOochMwXlGtDNg3-PgTGCMhcaenrVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694959769656-70ov83infnt7nlivc5nefto79or6o84j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
