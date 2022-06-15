@@ -25,12 +25,24 @@ class Scores extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: const [
-          ScoreWidget('Here will be scores!'),
-          ScoreWidget('Here will be scores!'),
-          ScoreWidget('Here will be scores!'),
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("images/scores-background.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: const [
+                ScoreWidget('Here will be scores!'),
+                ScoreWidget('Here will be scores!'),
+                ScoreWidget('Here will be scores!'),
+              ],
+            ),
+          ),
         ],
       ),
     );
