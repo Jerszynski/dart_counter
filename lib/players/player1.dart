@@ -11,7 +11,7 @@ class _Player1State extends State<Player1> {
   int player1Counter = 0;
   int games1Counter = 0;
 
-  void _increment() {
+  void incrementButton() {
     setState(() {
       player1Counter++;
       if (player1Counter == 3) {
@@ -21,13 +21,13 @@ class _Player1State extends State<Player1> {
     });
   }
 
-  void _decrement() {
+  void decrementButton() {
     setState(() {
       player1Counter != 0 ? player1Counter-- : player1Counter = 0;
     });
   }
 
-  void _reset() {
+  void resetButton() {
     setState(() {
       player1Counter = 0;
       games1Counter = 0;
@@ -60,17 +60,17 @@ class _Player1State extends State<Player1> {
           children: [
             ElevatedButton(
               style: buttonStyle,
-              onPressed: _increment,
+              onPressed: incrementButton,
               child: const Text('Increment'),
             ),
             ElevatedButton(
               style: buttonStyle,
-              onPressed: _decrement,
+              onPressed: decrementButton,
               child: const Text('Decrement'),
             ),
             ElevatedButton(
               style: buttonStyle,
-              onPressed: _reset,
+              onPressed: resetButton,
               child: const Text('Reset'),
             ),
           ],
