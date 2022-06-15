@@ -8,6 +8,8 @@ class Scores extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Scores'),
+        backgroundColor: const Color.fromRGBO(67, 160, 71, 0.8),
+        foregroundColor: Colors.black87,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green.shade400,
@@ -17,7 +19,7 @@ class Scores extends StatelessWidget {
         child: const Icon(Icons.keyboard_backspace_rounded),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.green.shade600,
+        color: const Color.fromRGBO(67, 160, 71, 0.8),
         child: Container(
           height: 50.0,
         ),
