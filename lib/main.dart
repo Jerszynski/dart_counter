@@ -55,8 +55,8 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
-                SaveScore(buttonStyle),
-                ScoreContainer(buttonStyle),
+                SaveScoreButton(buttonStyle),
+                ScoreContainerButton(buttonStyle),
               ],
             ),
           ),
@@ -66,8 +66,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class SaveScore extends StatelessWidget {
-  const SaveScore(
+class SaveScoreButton extends StatelessWidget {
+  const SaveScoreButton(
     this.buttonStyle, {
     Key? key,
   }) : super(key: key);
@@ -84,8 +84,8 @@ class SaveScore extends StatelessWidget {
   }
 }
 
-class ScoreContainer extends StatelessWidget {
-  const ScoreContainer(
+class ScoreContainerButton extends StatelessWidget {
+  const ScoreContainerButton(
     this.buttonStyle, {
     Key? key,
   }) : super(key: key);
