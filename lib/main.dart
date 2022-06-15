@@ -115,7 +115,7 @@ class PlayerContainer extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final dynamic playerContainer;
+  final Widget playerContainer;
 
   @override
   Widget build(BuildContext context) {
