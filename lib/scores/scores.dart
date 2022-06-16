@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Scores extends StatelessWidget {
@@ -34,14 +35,32 @@ class Scores extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: const [
-                ScoreWidget('Here will be scores!'),
-                ScoreWidget('Here will be scores!'),
-                ScoreWidget('Here will be scores!'),
-              ],
-            ),
+            child: StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection('scores').snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Wystąpił nieoczekiwany problem');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Text(
+                      'Prosze czekać, trwa ładowanie danych',
+                      style: TextStyle(color: Colors.white),
+                    );
+                  }
+
+                  final documents = snapshot.data!.docs;
+
+                  return ListView(
+                    padding: const EdgeInsets.all(20),
+                    children: [
+                      ScoreWidget(documents[0]['Player 1']),
+                      ScoreWidget(documents[0]['Player 2']),
+                      ScoreWidget('Here will be scores!'),
+                    ],
+                  );
+                }),
           ),
         ],
       ),
@@ -62,7 +81,7 @@ class ScoreWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.all(10),
-      color: Colors.grey.shade200,
+      color: Color.fromARGB(160, 238, 238, 238),
       child: Text(title),
     );
   }
