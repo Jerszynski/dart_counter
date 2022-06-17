@@ -23,14 +23,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonStyle = ButtonStyle(
-      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-      ),
-      backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
-    );
+    // final buttonStyle = ButtonStyle(
+    //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+    //     RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(8.0),
+    //     ),
+    //   ),
+    //   backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+    // );
 
     return Scaffold(
       appBar: AppBar(
@@ -61,8 +61,21 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
-                SaveScoreButton(buttonStyle),
-                ScoreContainerButton(buttonStyle),
+                MyButton(
+                  title: 'Save Scores',
+                  onPressed: () {},
+                ),
+                MyButton(
+                  title: 'Scores',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Scores(),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -72,45 +85,29 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class SaveScoreButton extends StatelessWidget {
-  const SaveScoreButton(
-    this.buttonStyle, {
+class MyButton extends StatelessWidget {
+  const MyButton({
     Key? key,
+    required this.onPressed,
+    required this.title,
   }) : super(key: key);
 
-  final ButtonStyle buttonStyle;
+  final VoidCallback onPressed;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: buttonStyle,
-      onPressed: () {},
-      child: const Text('Save Scores'),
-    );
-  }
-}
-
-class ScoreContainerButton extends StatelessWidget {
-  const ScoreContainerButton(
-    this.buttonStyle, {
-    Key? key,
-  }) : super(key: key);
-
-  final ButtonStyle buttonStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: buttonStyle,
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const Scores(),
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
           ),
-        );
-      },
-      child: const Text('Scores'),
+        ),
+        backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+      ),
+      onPressed: onPressed,
+      child: Text(title),
     );
   }
 }
