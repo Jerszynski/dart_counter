@@ -65,7 +65,7 @@ class Scores extends StatelessWidget {
                               .delete();
                         },
                         child: ScoreWidget(
-                          document['Player 1'],
+                          document['Player'],
                         ),
                       ),
                     ],

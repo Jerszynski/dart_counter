@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_counter/players/player.dart';
-
 import 'package:dart_counter/scores/scores.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,7 +11,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const MaterialApp(
+    MaterialApp(
       title: 'Simple Dart Counter for 2 ppl.',
       home: HomePage(),
     ),
@@ -20,7 +19,9 @@ void main() async {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +46,11 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(40),
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                const TextFields('Player 1'),
+                TextFields('Player 1', controller),
                 const SizedBox(height: 10),
                 const PlayerContainer(Player()),
                 const SizedBox(height: 40),
-                const TextFields('Player 2'),
+                TextFields('Player 2', controller),
                 const SizedBox(height: 10),
                 const PlayerContainer(Player()),
                 const SizedBox(height: 20),
@@ -58,7 +59,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
-                        'Player 1': '48',
+                        'Player': controller.text,
                       },
                     );
                   },
@@ -137,15 +138,18 @@ class PlayerContainer extends StatelessWidget {
 
 class TextFields extends StatelessWidget {
   const TextFields(
-    this.fieldTitle, {
+    this.fieldTitle,
+    this.controller, {
     Key? key,
   }) : super(key: key);
 
   final String fieldTitle;
+  final controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(2),
         enabledBorder: OutlineInputBorder(
