@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
 import 'package:dart_counter/scores/scores.dart';
@@ -23,15 +24,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final buttonStyle = ButtonStyle(
-    //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-    //     RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.circular(8.0),
-    //     ),
-    //   ),
-    //   backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
-    // );
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dart Counter'),
@@ -63,7 +55,13 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 MyButton(
                   title: 'Save Scores',
-                  onPressed: () {},
+                  onPressed: () {
+                    FirebaseFirestore.instance.collection('scores').add(
+                      {
+                        'Player 1': '48',
+                      },
+                    );
+                  },
                 ),
                 MyButton(
                   title: 'Scores',

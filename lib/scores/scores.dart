@@ -36,31 +36,43 @@ class Scores extends StatelessWidget {
               ),
             ),
             child: StreamBuilder<QuerySnapshot>(
-                stream:
-                    FirebaseFirestore.instance.collection('scores').snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return const Text('Wystąpił nieoczekiwany problem');
-                  }
+              stream:
+                  FirebaseFirestore.instance.collection('scores').snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Text('Wystąpił nieoczekiwany problem');
+                }
 
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Text(
-                      'Prosze czekać, trwa ładowanie danych',
-                      style: TextStyle(color: Colors.white),
-                    );
-                  }
-
-                  final documents = snapshot.data!.docs;
-
-                  return ListView(
-                    padding: const EdgeInsets.all(20),
-                    children: [
-                      ScoreWidget(documents[0]['Player 1']),
-                      ScoreWidget(documents[0]['Player 2']),
-                      ScoreWidget('Here will be scores!'),
-                    ],
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Text(
+                    'Prosze czekać, trwa ładowanie danych',
+                    style: TextStyle(color: Colors.white),
                   );
-                }),
+                }
+
+                final documents = snapshot.data!.docs;
+
+                return ListView(
+                  padding: const EdgeInsets.all(20),
+                  children: [
+                    for (final document in documents) ...[
+                      Dismissible(
+                        key: ValueKey(document.id),
+                        onDismissed: (_) {
+                          FirebaseFirestore.instance
+                              .collection('scores')
+                              .doc(document.id)
+                              .delete();
+                        },
+                        child: ScoreWidget(
+                          document['Player 1'],
+                        ),
+                      ),
+                    ],
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
