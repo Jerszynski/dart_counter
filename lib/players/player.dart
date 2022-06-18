@@ -1,49 +1,38 @@
 import 'package:flutter/material.dart';
 
-class Player1 extends StatefulWidget {
-  const Player1({Key? key}) : super(key: key);
+class Player extends StatefulWidget {
+  const Player({Key? key}) : super(key: key);
 
   @override
-  _Player1State createState() => _Player1State();
+  _PlayerState createState() => _PlayerState();
 }
 
-class _Player1State extends State<Player1> {
-  int player1Counter = 0;
-  int games1Counter = 0;
+class _PlayerState extends State<Player> {
+  int playerCounter = 0;
+  int gamesCounter = 0;
 
   void incrementButton() {
     setState(() {
-      player1Counter++;
-      if (player1Counter == 3) {
-        games1Counter++;
-        player1Counter = 0;
+      playerCounter++;
+      if (playerCounter == 3) {
+        gamesCounter++;
+        playerCounter = 0;
       }
     });
   }
 
   void decrementButton() {
     setState(() {
-      player1Counter != 0 ? player1Counter-- : player1Counter = 0;
+      playerCounter != 0 ? playerCounter-- : playerCounter = 0;
     });
   }
 
   void resetButton() {
     setState(() {
-      player1Counter = 0;
-      games1Counter = 0;
+      playerCounter = 0;
+      gamesCounter = 0;
     });
   }
-
-  // final buttonStyle = ButtonStyle(
-  //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-  //     RoundedRectangleBorder(
-  //       borderRadius: BorderRadius.circular(8.0),
-  //     ),
-  //   ),
-  //   backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
-  //   shadowColor: MaterialStateProperty.all(Colors.black),
-  //   elevation: MaterialStateProperty.all(5),
-  // );
 
   final textStyle = const TextStyle(
     fontSize: 24,
@@ -67,11 +56,11 @@ class _Player1State extends State<Player1> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Games: $games1Counter',
+              'Games: $gamesCounter',
               style: textStyle,
             ),
             Text(
-              'Sets: $player1Counter',
+              'Sets: $playerCounter',
               style: textStyle,
             ),
           ],

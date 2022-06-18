@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dart_counter/players/player1.dart';
-import 'package:dart_counter/players/player2.dart';
+import 'package:dart_counter/players/player.dart';
+
 import 'package:dart_counter/scores/scores.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,11 +47,11 @@ class HomePage extends StatelessWidget {
               children: [
                 const TextFields('Player 1'),
                 const SizedBox(height: 10),
-                const PlayerContainer(Player1()),
+                const PlayerContainer(Player()),
                 const SizedBox(height: 40),
                 const TextFields('Player 2'),
                 const SizedBox(height: 10),
-                const PlayerContainer(Player2()),
+                const PlayerContainer(Player()),
                 const SizedBox(height: 20),
                 MyButton(
                   title: 'Save Scores',
