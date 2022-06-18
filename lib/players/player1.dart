@@ -34,16 +34,16 @@ class _Player1State extends State<Player1> {
     });
   }
 
-  final buttonStyle = ButtonStyle(
-    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-    ),
-    backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
-    shadowColor: MaterialStateProperty.all(Colors.black),
-    elevation: MaterialStateProperty.all(5),
-  );
+  // final buttonStyle = ButtonStyle(
+  //   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+  //     RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(8.0),
+  //     ),
+  //   ),
+  //   backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+  //   shadowColor: MaterialStateProperty.all(Colors.black),
+  //   elevation: MaterialStateProperty.all(5),
+  // );
 
   final textStyle = const TextStyle(
     fontSize: 24,
@@ -58,21 +58,9 @@ class _Player1State extends State<Player1> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-              style: buttonStyle,
-              onPressed: incrementButton,
-              child: const Text('Increment'),
-            ),
-            ElevatedButton(
-              style: buttonStyle,
-              onPressed: decrementButton,
-              child: const Text('Decrement'),
-            ),
-            ElevatedButton(
-              style: buttonStyle,
-              onPressed: resetButton,
-              child: const Text('Reset'),
-            ),
+            Button(onPressed: incrementButton, title: 'Increment'),
+            Button(onPressed: decrementButton, title: 'Decrement'),
+            Button(onPressed: resetButton, title: 'Reset'),
           ],
         ),
         Column(
@@ -89,6 +77,35 @@ class _Player1State extends State<Player1> {
           ],
         ),
       ],
+    );
+  }
+}
+
+class Button extends StatelessWidget {
+  const Button({
+    Key? key,
+    required this.onPressed,
+    required this.title,
+  }) : super(key: key);
+
+  final VoidCallback onPressed;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+        ),
+        backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+        shadowColor: MaterialStateProperty.all(Colors.black),
+        elevation: MaterialStateProperty.all(5),
+      ),
+      onPressed: onPressed,
+      child: Text(title),
     );
   }
 }
