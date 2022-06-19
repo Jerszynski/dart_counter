@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
-class Player extends StatefulWidget {
-  const Player({Key? key}) : super(key: key);
+class Player1 extends StatefulWidget {
+  const Player1({Key? key}) : super(key: key);
 
   @override
-  _PlayerState createState() => _PlayerState();
+  Player1State createState() => Player1State();
 }
 
-class _PlayerState extends State<Player> {
-  int playerCounter = 0;
-  int gamesCounter = 0;
+class Player1State extends State<Player1> {
+  int player1Counter = 0;
+  int games1Counter = 0;
 
   void incrementButton() {
     setState(() {
-      playerCounter++;
-      if (playerCounter == 3) {
-        gamesCounter++;
-        playerCounter = 0;
+      player1Counter++;
+      if (player1Counter == 3) {
+        games1Counter++;
+        player1Counter = 0;
       }
     });
   }
 
   void decrementButton() {
     setState(() {
-      playerCounter != 0 ? playerCounter-- : playerCounter = 0;
+      player1Counter != 0 ? player1Counter-- : player1Counter = 0;
     });
   }
 
   void resetButton() {
     setState(() {
-      playerCounter = 0;
-      gamesCounter = 0;
+      player1Counter = 0;
+      games1Counter = 0;
     });
   }
 
@@ -56,11 +56,11 @@ class _PlayerState extends State<Player> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Games: $gamesCounter',
+              'Games: $games1Counter',
               style: textStyle,
             ),
             Text(
-              'Sets: $playerCounter',
+              'Sets: $player1Counter',
               style: textStyle,
             ),
           ],

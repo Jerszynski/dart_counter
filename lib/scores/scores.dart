@@ -93,7 +93,7 @@ class ScoreWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.all(10),
-      color: Color.fromARGB(160, 238, 238, 238),
+      color: const Color.fromARGB(160, 238, 238, 238),
       child: Text(title),
     );
   }
