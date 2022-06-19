@@ -12,7 +12,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    MaterialApp(
+    const MaterialApp(
       title: 'Simple Dart Counter for 2 ppl.',
       home: HomePage(),
     ),
@@ -20,9 +20,7 @@ void main() async {
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-
-  final controller = TextEditingController();
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +45,11 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(40),
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                TextFields('Player 1', controller),
+                const TextFields('Player 1'),
                 const SizedBox(height: 10),
                 const PlayerContainer(Player1()),
                 const SizedBox(height: 40),
-                TextFields('Player 2', controller),
+                const TextFields('Player 2'),
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
@@ -60,7 +58,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
-                        'Player': controller.text,
+                        'Player': 'Coś',
                       },
                     );
                   },
@@ -139,18 +137,15 @@ class PlayerContainer extends StatelessWidget {
 
 class TextFields extends StatelessWidget {
   const TextFields(
-    this.fieldTitle,
-    this.controller, {
+    this.fieldTitle, {
     Key? key,
   }) : super(key: key);
 
   final String fieldTitle;
-  final controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(2),
         enabledBorder: OutlineInputBorder(
