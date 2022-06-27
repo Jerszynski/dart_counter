@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_counter/main_buttons/main_button_content.dart';
+import 'package:dart_counter/player_container/player_container_content.dart';
 import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
 import 'package:dart_counter/scores/scores.dart';
+import 'package:dart_counter/text_fields/text_field_content.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -53,7 +56,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 const PlayerContainer(Player2()),
                 const SizedBox(height: 20),
-                MyButton(
+                MainButton(
                   title: 'Save Scores',
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
@@ -63,7 +66,7 @@ class HomePage extends StatelessWidget {
                     );
                   },
                 ),
-                MyButton(
+                MainButton(
                   title: 'Scores',
                   onPressed: () {
                     Navigator.push(
@@ -78,91 +81,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyButton extends StatelessWidget {
-  const MyButton({
-    Key? key,
-    required this.onPressed,
-    required this.title,
-  }) : super(key: key);
-
-  final VoidCallback onPressed;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
-      ),
-      onPressed: onPressed,
-      child: Text(title),
-    );
-  }
-}
-
-class PlayerContainer extends StatelessWidget {
-  const PlayerContainer(
-    this.playerContainer, {
-    Key? key,
-  }) : super(key: key);
-
-  final Widget playerContainer;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
-        border: Border.all(
-          width: 2,
-          color: Colors.black,
-        ),
-      ),
-      height: 180,
-      child: playerContainer,
-    );
-  }
-}
-
-class TextFields extends StatelessWidget {
-  const TextFields(
-    this.fieldTitle, {
-    Key? key,
-  }) : super(key: key);
-
-  final String fieldTitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.all(2),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.black, width: 2.0),
-        ),
-        fillColor: Colors.white.withOpacity(0.7),
-        filled: true,
-        prefixIcon: const Icon(Icons.person),
-        hintText: 'Enter player name',
-        hintStyle: const TextStyle(
-          color: Colors.black26,
-        ),
-        labelText: fieldTitle,
-        labelStyle: const TextStyle(
-          color: Colors.black45,
-        ),
       ),
     );
   }
