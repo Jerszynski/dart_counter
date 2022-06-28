@@ -7,10 +7,20 @@ import 'package:dart_counter/scores/scores.dart';
 import 'package:dart_counter/text_fields/text_field_content.dart';
 import 'package:flutter/material.dart';
 
-class MainView extends StatelessWidget {
+class MainView extends StatefulWidget {
   const MainView({
     Key? key,
   }) : super(key: key);
+
+  @override
+  State<MainView> createState() => _MainViewState();
+}
+
+class _MainViewState extends State<MainView> {
+  var player1 = '';
+  var player2 = '';
+  var player1games = '';
+  var player2games = '';
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +42,7 @@ class MainView extends StatelessWidget {
               ),
             ),
             child: ListView(
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 const TextFields('Player 1'),
@@ -48,7 +58,10 @@ class MainView extends StatelessWidget {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
-                        'Player': 'Coś',
+                        'Player1': 'Coś1',
+                        'Score1': 'wynik1',
+                        'Player2': 'Coś2',
+                        'Score2': 'wynik2',
                       },
                     );
                   },

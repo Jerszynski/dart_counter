@@ -34,8 +34,13 @@ class Player1State extends State<Player1> {
     });
   }
 
+  final textButtonStyle = TextButton.styleFrom(
+    primary: Colors.black,
+    textStyle: const TextStyle(fontSize: 16),
+  );
+
   final textStyle = const TextStyle(
-    fontSize: 24,
+    fontSize: 20,
     color: Colors.black87,
   );
 
@@ -47,9 +52,21 @@ class Player1State extends State<Player1> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Button(onPressed: incrementButton, title: 'Increment'),
-            Button(onPressed: decrementButton, title: 'Decrement'),
-            Button(onPressed: resetButton, title: 'Reset'),
+            TextButton(
+              style: textButtonStyle,
+              onPressed: incrementButton,
+              child: const Text('Increment'),
+            ),
+            TextButton(
+              style: textButtonStyle,
+              onPressed: decrementButton,
+              child: const Text('Decrement'),
+            ),
+            TextButton(
+              style: textButtonStyle,
+              onPressed: resetButton,
+              child: const Text('Reset'),
+            ),
           ],
         ),
         Column(
