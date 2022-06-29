@@ -17,11 +17,6 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-  var player1 = '';
-  var player2 = '';
-  var player1games = '';
-  var player2games = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,10 +53,10 @@ class _MainViewState extends State<MainView> {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
-                        'Player1': 'Coś1',
-                        'Score1': 'wynik1',
-                        'Player2': 'Coś2',
-                        'Score2': 'wynik2',
+                        'Player1': playerName,
+                        'Score1': games1Counter,
+                        'Player2': playerName,
+                        'Score2': games2Counter,
                       },
                     );
                   },

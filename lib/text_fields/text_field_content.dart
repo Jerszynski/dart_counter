@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TextFields extends StatelessWidget {
+var playerName = '';
+
+class TextFields extends StatefulWidget {
   const TextFields(
     this.fieldTitle, {
     Key? key,
@@ -8,6 +10,11 @@ class TextFields extends StatelessWidget {
 
   final String fieldTitle;
 
+  @override
+  State<TextFields> createState() => _TextFieldsState();
+}
+
+class _TextFieldsState extends State<TextFields> {
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -24,11 +31,16 @@ class TextFields extends StatelessWidget {
         hintStyle: const TextStyle(
           color: Colors.black26,
         ),
-        labelText: fieldTitle,
+        labelText: widget.fieldTitle,
         labelStyle: const TextStyle(
           color: Colors.black45,
         ),
       ),
+      onChanged: (newValue) {
+        setState(() {
+          playerName = newValue;
+        });
+      },
     );
   }
 }

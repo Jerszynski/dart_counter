@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+int player1Counter = 0;
+int games1Counter = 0;
+
 class Player1 extends StatefulWidget {
   const Player1({Key? key}) : super(key: key);
 
@@ -8,8 +11,8 @@ class Player1 extends StatefulWidget {
 }
 
 class Player1State extends State<Player1> {
-  int player1Counter = 0;
-  int games1Counter = 0;
+  // int player1Counter = 0;
+  // int games1Counter = 0;
 
   void incrementButton() {
     setState(() {
