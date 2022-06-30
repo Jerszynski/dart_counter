@@ -52,12 +52,16 @@ class Scores extends StatelessWidget {
 
                 final documents = snapshot.data!.docs;
 
-                return GridView.count(
-                  // primary: false,
-                  // padding: const EdgeInsets.all(20),
-                  // crossAxisSpacing: 10,
-                  // mainAxisSpacing: 10,
-                  crossAxisCount: 4,
+                return GridView(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    // maxCrossAxisExtent: 80,
+                    // mainAxisSpacing: 10,
+                    // childAspectRatio: 2.5,
+                    crossAxisCount: 4,
+                    childAspectRatio: 2,
+                    mainAxisSpacing: 6,
+                  ),
+                  padding: const EdgeInsets.all(24),
                   children: <Widget>[
                     for (final document in documents) ...[
                       ScoreWidget(document['Player1']),
@@ -87,8 +91,8 @@ class ScoreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(4),
       color: const Color.fromARGB(160, 238, 238, 238),
       child: Text(title),
     );
