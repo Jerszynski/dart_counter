@@ -52,22 +52,18 @@ class Scores extends StatelessWidget {
 
                 final documents = snapshot.data!.docs;
 
-                return ListView(
-                  padding: const EdgeInsets.all(20),
-                  children: [
+                return GridView.count(
+                  // primary: false,
+                  // padding: const EdgeInsets.all(20),
+                  // crossAxisSpacing: 10,
+                  // mainAxisSpacing: 10,
+                  crossAxisCount: 4,
+                  children: <Widget>[
                     for (final document in documents) ...[
-                      Dismissible(
-                        key: ValueKey(document.id),
-                        onDismissed: (_) {
-                          FirebaseFirestore.instance
-                              .collection('scores')
-                              .doc(document.id)
-                              .delete();
-                        },
-                        child: ScoreWidget(
-                          document['Player'],
-                        ),
-                      ),
+                      ScoreWidget(document['Player1']),
+                      ScoreWidget(document['Score1'].toString()),
+                      ScoreWidget(document['Player2']),
+                      ScoreWidget(document['Score2'].toString()),
                     ],
                   ],
                 );
