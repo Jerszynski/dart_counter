@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-var playerName = '';
+var player1Name = '';
 
-class TextFields extends StatefulWidget {
-  const TextFields(
+class Player1TextField extends StatefulWidget {
+  const Player1TextField(
     this.fieldTitle, {
     Key? key,
   }) : super(key: key);
@@ -11,10 +11,10 @@ class TextFields extends StatefulWidget {
   final String fieldTitle;
 
   @override
-  State<TextFields> createState() => _TextFieldsState();
+  State<Player1TextField> createState() => _Player1TextField();
 }
 
-class _TextFieldsState extends State<TextFields> {
+class _Player1TextField extends State<Player1TextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -38,7 +38,7 @@ class _TextFieldsState extends State<TextFields> {
       ),
       onChanged: (newValue) {
         setState(() {
-          playerName = newValue;
+          player1Name = newValue;
         });
       },
     );
