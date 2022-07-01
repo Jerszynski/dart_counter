@@ -17,7 +17,7 @@ class PlayerContainer extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(12)),
         border: Border.all(
           width: 2,
-          color: Colors.black,
+          color: Colors.black.withOpacity(0.5),
         ),
       ),
       height: 180,

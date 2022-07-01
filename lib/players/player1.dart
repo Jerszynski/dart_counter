@@ -11,13 +11,10 @@ class Player1 extends StatefulWidget {
 }
 
 class Player1State extends State<Player1> {
-  // int player1Counter = 0;
-  // int games1Counter = 0;
-
   void incrementButton() {
     setState(() {
       player1Counter++;
-      if (player1Counter == 3) {
+      if (player1Counter == 6) {
         games1Counter++;
         player1Counter = 0;
       }

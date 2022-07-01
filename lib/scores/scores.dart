@@ -1,9 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Scores extends StatelessWidget {
+class Scores extends StatefulWidget {
   const Scores({Key? key}) : super(key: key);
 
+  @override
+  State<Scores> createState() => _ScoresState();
+}
+
+class _ScoresState extends State<Scores> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +25,14 @@ class Scores extends StatelessWidget {
         child: const Icon(Icons.keyboard_backspace_rounded),
       ),
       bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
         color: const Color.fromRGBO(67, 160, 71, 0.8),
         child: Container(
           height: 50.0,
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       body: Stack(
         children: [
           Container(
@@ -54,9 +61,6 @@ class Scores extends StatelessWidget {
 
                 return GridView(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    // maxCrossAxisExtent: 80,
-                    // mainAxisSpacing: 10,
-                    // childAspectRatio: 2.5,
                     crossAxisCount: 4,
                     childAspectRatio: 2,
                     mainAxisSpacing: 6,

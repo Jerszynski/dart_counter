@@ -22,7 +22,8 @@ class _Player1TextField extends State<Player1TextField> {
         contentPadding: const EdgeInsets.all(2),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.black, width: 2.0),
+          borderSide:
+              BorderSide(color: Colors.black.withOpacity(0.5), width: 2.0),
         ),
         fillColor: Colors.white.withOpacity(0.7),
         filled: true,
