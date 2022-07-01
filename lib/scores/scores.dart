@@ -17,7 +17,7 @@ class _ScoresState extends State<Scores> {
         backgroundColor: const Color.fromRGBO(67, 160, 71, 0.8),
         foregroundColor: Colors.black87,
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.small(
         backgroundColor: Colors.green.shade400,
         onPressed: () {
           Navigator.pop(context);
