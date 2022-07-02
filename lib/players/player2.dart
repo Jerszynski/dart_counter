@@ -14,7 +14,7 @@ class Player2State extends State<Player2> {
   void incrementButton() {
     setState(() {
       player2Counter++;
-      if (player2Counter == 6) {
+      if (player2Counter == 4) {
         games2Counter++;
         player2Counter = 0;
       }

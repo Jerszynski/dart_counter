@@ -7,6 +7,7 @@ import 'package:dart_counter/scores/scores.dart';
 import 'package:dart_counter/text_fields/player_one_text_field_content.dart';
 import 'package:dart_counter/text_fields/player_two_text_field_content.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class MainView extends StatefulWidget {
   const MainView({
@@ -16,6 +17,9 @@ class MainView extends StatefulWidget {
   @override
   State<MainView> createState() => _MainViewState();
 }
+
+// DateTime now = DateTime.now();
+String formattedDate = DateFormat('dd-mm-yy  kk:mm').format(DateTime.now());
 
 class _MainViewState extends State<MainView> {
   @override
@@ -54,6 +58,7 @@ class _MainViewState extends State<MainView> {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
+                        'Date': formattedDate,
                         'Player1': player1Name,
                         'Score1': games1Counter,
                         'Player2': player2Name,

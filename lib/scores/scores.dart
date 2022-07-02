@@ -61,13 +61,14 @@ class _ScoresState extends State<Scores> {
 
                 return GridView(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    childAspectRatio: 2,
+                    crossAxisCount: 5,
+                    childAspectRatio: 1.8,
                     mainAxisSpacing: 6,
                   ),
                   padding: const EdgeInsets.all(24),
                   children: <Widget>[
                     for (final document in documents) ...[
+                      ScoreWidget(document['Date'].toString()),
                       ScoreWidget(document['Player1']),
                       ScoreWidget(document['Score1'].toString()),
                       ScoreWidget(document['Player2']),
