@@ -61,7 +61,7 @@ class _ScoresState extends State<Scores> {
 
                 return GridView(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
+                    crossAxisCount: 6,
                     childAspectRatio: 1.8,
                     mainAxisSpacing: 6,
                   ),
@@ -73,6 +73,11 @@ class _ScoresState extends State<Scores> {
                       ScoreWidget(document['Score1'].toString()),
                       ScoreWidget(document['Player2']),
                       ScoreWidget(document['Score2'].toString()),
+                      DeleteButton()
+                      // DeleteButton(FirebaseFirestore.instance
+                      //     .collection('scores')
+                      //     .doc(document.id)
+                      //     .delete()),
                     ],
                   ],
                 );
@@ -81,6 +86,20 @@ class _ScoresState extends State<Scores> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: const Icon(Icons.delete),
     );
   }
 }
