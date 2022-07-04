@@ -18,8 +18,7 @@ class MainView extends StatefulWidget {
 }
 
 // DateTime now = DateTime.now();
-// String formattedDate = DateFormat('dd-mm-yy  kk:mm').format(DateTime.now());
-// final now = FieldValue.serverTimestamp();
+// String formattedDate = DateFormat('dd-mm-yy  kk:mm').format(now);
 
 class _MainViewState extends State<MainView> {
   @override
@@ -58,7 +57,7 @@ class _MainViewState extends State<MainView> {
                   onPressed: () {
                     FirebaseFirestore.instance.collection('scores').add(
                       {
-                        'Date': DateTime.now().toString().substring(0, 10),
+                        'Date': DateTime.now().toString().substring(2, 10),
                         'Player1': player1Name,
                         'Score1': games1Counter,
                         'Player2': player2Name,

@@ -62,25 +62,33 @@ class _ScoresState extends State<Scores> {
                 return GridView(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 6,
-                    childAspectRatio: 1.8,
+                    childAspectRatio: 1.6,
                     mainAxisSpacing: 6,
                   ),
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(15),
                   children: <Widget>[
                     for (final document in documents) ...[
-                      ScoreWidget(document['Date'].toString()),
+                      ScoreWidget(document['Date']),
                       ScoreWidget(document['Player1']),
                       ScoreWidget(document['Score1'].toString()),
                       ScoreWidget(document['Player2']),
                       ScoreWidget(document['Score2'].toString()),
                       ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                            const Color.fromARGB(159, 255, 0, 0),
+                          ),
+                        ),
                         onPressed: () {
                           FirebaseFirestore.instance
                               .collection('scores')
                               .doc(document.id)
                               .delete();
                         },
-                        child: const Icon(Icons.delete),
+                        child: const Icon(
+                          Icons.remove_sharp,
+                          color: Colors.black,
+                        ),
                       )
                     ],
                   ],
@@ -108,7 +116,10 @@ class ScoreWidget extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(4),
       color: const Color.fromARGB(160, 238, 238, 238),
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
