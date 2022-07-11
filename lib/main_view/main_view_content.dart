@@ -17,10 +17,9 @@ class MainView extends StatefulWidget {
   State<MainView> createState() => _MainViewState();
 }
 
-// DateTime now = DateTime.now();
-// String formattedDate = DateFormat('dd-mm-yy  kk:mm').format(now);
-
 class _MainViewState extends State<MainView> {
+  var currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +78,34 @@ class _MainViewState extends State<MainView> {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (newIndex) {
+          setState(() {
+            currentIndex = newIndex;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.people_outline),
+            label: 'Main Page',
+            backgroundColor:
+                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.save_outlined),
+            label: 'Save Scores',
+            backgroundColor:
+                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(Icons.scoreboard_outlined),
+            label: 'Scores Page',
+            backgroundColor:
+                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
           ),
         ],
       ),
