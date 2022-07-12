@@ -20,6 +20,16 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   var currentIndex = 0;
 
+  var add = FirebaseFirestore.instance.collection('scores').add(
+    {
+      'Date': DateTime.now().toString().substring(2, 10),
+      'Player1': player1Name,
+      'Score1': games1Counter,
+      'Player2': player2Name,
+      'Score2': games2Counter,
+    },
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,57 +40,66 @@ class _MainViewState extends State<MainView> {
             const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
         foregroundColor: Colors.black87,
       ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("images/background.jpg"),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: ListView(
-              padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                const Player1TextField('Player 1'),
-                const SizedBox(height: 10),
-                const PlayerContainer(Player1()),
-                const SizedBox(height: 40),
-                const Player2TextField('Player 2'),
-                const SizedBox(height: 10),
-                const PlayerContainer(Player2()),
-                const SizedBox(height: 20),
-                MainButton(
-                  title: 'Save Scores',
-                  onPressed: () {
-                    FirebaseFirestore.instance.collection('scores').add(
-                      {
-                        'Date': DateTime.now().toString().substring(2, 10),
-                        'Player1': player1Name,
-                        'Score1': games1Counter,
-                        'Player2': player2Name,
-                        'Score2': games2Counter,
+      body: Builder(builder: (context) {
+        if (currentIndex == 0) {
+          return Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("images/background.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: ListView(
+                  padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    const Player1TextField('Player 1'),
+                    const SizedBox(height: 10),
+                    const PlayerContainer(Player1()),
+                    const SizedBox(height: 40),
+                    const Player2TextField('Player 2'),
+                    const SizedBox(height: 10),
+                    const PlayerContainer(Player2()),
+                    const SizedBox(height: 20),
+                    MainButton(
+                      title: 'Save Scores',
+                      onPressed: () {
+                        FirebaseFirestore.instance.collection('scores').add(
+                          {
+                            'Date': DateTime.now().toString().substring(2, 10),
+                            'Player1': player1Name,
+                            'Score1': games1Counter,
+                            'Player2': player2Name,
+                            'Score2': games2Counter,
+                          },
+                        );
                       },
-                    );
-                  },
+                    ),
+                    // MainButton(
+                    //   title: 'Scores',
+                    //   onPressed: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const Scores(),
+                    //       ),
+                    //     );
+                    //   },
+                    // ),
+                  ],
                 ),
-                MainButton(
-                  title: 'Scores',
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Scores(),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+              ),
+            ],
+          );
+        }
+        if (currentIndex == 1) {
+          return const Scores();
+        }
+
+        return Container();
+      }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (newIndex) {
@@ -88,24 +107,20 @@ class _MainViewState extends State<MainView> {
             currentIndex = newIndex;
           });
         },
-        items: [
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        items: const [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.people_outline),
+            icon: Icon(Icons.people_outline),
             label: 'Main Page',
-            backgroundColor:
-                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.save_outlined),
-            label: 'Save Scores',
-            backgroundColor:
-                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(Icons.scoreboard_outlined),
+            icon: Icon(Icons.scoreboard_outlined),
             label: 'Scores Page',
-            backgroundColor:
-                const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.save_outlined),
+            label: 'Save Scores',
           ),
         ],
       ),

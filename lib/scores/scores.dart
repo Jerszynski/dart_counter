@@ -17,22 +17,22 @@ class _ScoresState extends State<Scores> {
         backgroundColor: const Color.fromRGBO(67, 160, 71, 0.8),
         foregroundColor: Colors.black87,
       ),
-      floatingActionButton: FloatingActionButton.small(
-        backgroundColor: Colors.green.shade400,
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Icon(Icons.keyboard_backspace_rounded),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: const Color.fromRGBO(67, 160, 71, 0.8),
-        child: Container(
-          height: 50.0,
-        ),
-      ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.miniCenterDocked,
+      // floatingActionButton: FloatingActionButton.small(
+      //   backgroundColor: Colors.green.shade400,
+      //   onPressed: () {
+      //     Navigator.pop(context);
+      //   },
+      //   child: const Icon(Icons.keyboard_backspace_rounded),
+      // ),
+      // bottomNavigationBar: BottomAppBar(
+      //   shape: const CircularNotchedRectangle(),
+      //   color: const Color.fromRGBO(67, 160, 71, 0.8),
+      //   child: Container(
+      //     height: 50.0,
+      //   ),
+      // ),
+      // floatingActionButtonLocation:
+      //     FloatingActionButtonLocation.miniCenterDocked,
       body: Stack(
         children: [
           Container(
