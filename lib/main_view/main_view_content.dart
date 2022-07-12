@@ -20,15 +20,19 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   var currentIndex = 0;
 
-  var add = FirebaseFirestore.instance.collection('scores').add(
-    {
-      'Date': DateTime.now().toString().substring(2, 10),
-      'Player1': player1Name,
-      'Score1': games1Counter,
-      'Player2': player2Name,
-      'Score2': games2Counter,
-    },
-  );
+  addAllDataToFirebase() async {
+    var addData = await FirebaseFirestore.instance.collection('scores').add(
+      {
+        'Date': DateTime.now().toString().substring(2, 10),
+        'Player1': player1Name,
+        'Score1': games1Counter,
+        'Player2': player2Name,
+        'Score2': games2Counter,
+      },
+    );
+
+    return addData;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +102,7 @@ class _MainViewState extends State<MainView> {
           return const Scores();
         }
 
-        return Container();
+        return addAllDataToFirebase();
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
