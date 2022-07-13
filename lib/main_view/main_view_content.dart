@@ -20,20 +20,6 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   var currentIndex = 0;
 
-  addAllDataToFirebase() async {
-    var addData = await FirebaseFirestore.instance.collection('scores').add(
-      {
-        'Date': DateTime.now().toString().substring(2, 10),
-        'Player1': player1Name,
-        'Score1': games1Counter,
-        'Player2': player2Name,
-        'Score2': games2Counter,
-      },
-    );
-
-    return addData;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,35 +67,32 @@ class _MainViewState extends State<MainView> {
                         );
                       },
                     ),
-                    // MainButton(
-                    //   title: 'Scores',
-                    //   onPressed: () {
-                    //     Navigator.push(
-                    //       context,
-                    //       MaterialPageRoute(
-                    //         builder: (context) => const Scores(),
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
                   ],
                 ),
               ),
             ],
           );
         }
-        if (currentIndex == 1) {
-          return const Scores();
-        }
-
-        return addAllDataToFirebase();
+        return const Scores();
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
+          if (newIndex == 2) {
+            FirebaseFirestore.instance.collection('scores').add(
+              {
+                'Date': DateTime.now().toString().substring(2, 10),
+                'Player1': player1Name,
+                'Score1': games1Counter,
+                'Player2': player2Name,
+                'Score2': games2Counter,
+              },
+            );
+          } else {
+            setState(() {
+              currentIndex = newIndex;
+            });
+          }
         },
         backgroundColor:
             const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),

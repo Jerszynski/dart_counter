@@ -12,17 +12,18 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-        ),
-        backgroundColor: MaterialStateProperty.all(Colors.green.shade600),
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: Colors.black87,
+        backgroundColor:
+            const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
+        padding: const EdgeInsets.all(8),
       ),
       onPressed: onPressed,
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 16),
+      ),
     );
   }
 }
