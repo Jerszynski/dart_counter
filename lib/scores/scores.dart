@@ -12,13 +12,6 @@ class _ScoresState extends State<Scores> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Scores'),
-        centerTitle: true,
-        backgroundColor:
-            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-        foregroundColor: Colors.black87,
-      ),
       body: Stack(
         children: [
           Container(
@@ -59,8 +52,8 @@ class _ScoresState extends State<Scores> {
                       ScoreWidget(document['Date']),
                       ScoreWidget(document['Player1']),
                       ScoreWidget(document['Score1'].toString()),
-                      ScoreWidget(document['Player2']),
                       ScoreWidget(document['Score2'].toString()),
+                      ScoreWidget(document['Player2']),
                       ElevatedButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
