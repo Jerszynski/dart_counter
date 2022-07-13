@@ -46,13 +46,13 @@ class _MainViewState extends State<MainView> {
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     const Player1TextField('Player 1'),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 4),
                     const PlayerContainer(Player1()),
-                    const SizedBox(height: 40),
-                    const Player2TextField('Player 2'),
                     const SizedBox(height: 10),
+                    const Player2TextField('Player 2'),
+                    const SizedBox(height: 4),
                     const PlayerContainer(Player2()),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 4),
                     MainButton(
                       title: 'Save Scores',
                       onPressed: () {

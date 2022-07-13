@@ -12,17 +12,22 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        primary: Colors.black87,
-        backgroundColor:
-            const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
-        padding: const EdgeInsets.all(8),
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 244, 244, 244).withOpacity(0.7),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        border: Border.all(
+          width: 2,
+          color: Colors.black.withOpacity(0.5),
+        ),
       ),
-      onPressed: onPressed,
-      child: Text(
-        title,
-        style: const TextStyle(fontSize: 16),
+      height: 36,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          primary: Colors.black87,
+        ),
+        onPressed: onPressed,
+        child: Text(title),
       ),
     );
   }
