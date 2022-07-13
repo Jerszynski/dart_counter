@@ -29,8 +29,10 @@ class _ScoresState extends State<Scores> {
               ),
             ),
             child: StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection('scores').snapshots(),
+              stream: FirebaseFirestore.instance
+                  .collection('scores')
+                  .orderBy('Date', descending: true)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return const Text('Wystąpił nieoczekiwany problem');
