@@ -4,6 +4,7 @@ import 'package:dart_counter/player_container/player_container_content.dart';
 import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
 import 'package:dart_counter/scores/scores.dart';
+import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:dart_counter/text_fields/player_one_text_field_content.dart';
 import 'package:dart_counter/text_fields/player_two_text_field_content.dart';
 import 'package:flutter/material.dart';
@@ -30,69 +31,63 @@ class _MainViewState extends State<MainView> {
             const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
         foregroundColor: Colors.black87,
       ),
-      body: Builder(builder: (context) {
-        if (currentIndex == 0) {
-          return Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("images/background.jpg"),
-                    fit: BoxFit.cover,
+      body: Builder(
+        builder: (context) {
+          if (currentIndex == 0) {
+            return Stack(
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("images/background.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      const Player1TextField('Player 1'),
+                      const SizedBox(height: 4),
+                      const PlayerContainer(Player1()),
+                      const SizedBox(height: 10),
+                      const Player2TextField('Player 2'),
+                      const SizedBox(height: 4),
+                      const PlayerContainer(Player2()),
+                      const SizedBox(height: 4),
+                      MainButton(
+                        title: 'Save Scores',
+                        onPressed: () {
+                          FirebaseFirestore.instance.collection('scores').add(
+                            {
+                              'Date':
+                                  DateTime.now().toString().substring(2, 10),
+                              'Player1': player1Name,
+                              'Score1': games1Counter,
+                              'Player2': player2Name,
+                              'Score2': games2Counter,
+                            },
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ),
-                child: ListView(
-                  padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    const Player1TextField('Player 1'),
-                    const SizedBox(height: 4),
-                    const PlayerContainer(Player1()),
-                    const SizedBox(height: 10),
-                    const Player2TextField('Player 2'),
-                    const SizedBox(height: 4),
-                    const PlayerContainer(Player2()),
-                    const SizedBox(height: 4),
-                    MainButton(
-                      title: 'Save Scores',
-                      onPressed: () {
-                        FirebaseFirestore.instance.collection('scores').add(
-                          {
-                            'Date': DateTime.now().toString().substring(2, 10),
-                            'Player1': player1Name,
-                            'Score1': games1Counter,
-                            'Player2': player2Name,
-                            'Score2': games2Counter,
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          );
-        }
-        return const Scores();
-      }),
+              ],
+            );
+          }
+          if (currentIndex == 1) {
+            return const Scores();
+          }
+          return const SettingsPage();
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (newIndex) {
-          if (newIndex == 2) {
-            FirebaseFirestore.instance.collection('scores').add(
-              {
-                'Date': DateTime.now().toString().substring(2, 10),
-                'Player1': player1Name,
-                'Score1': games1Counter,
-                'Player2': player2Name,
-                'Score2': games2Counter,
-              },
-            );
-          } else {
-            setState(() {
-              currentIndex = newIndex;
-            });
-          }
+          setState(() {
+            currentIndex = newIndex;
+          });
         },
         backgroundColor:
             const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
@@ -106,8 +101,8 @@ class _MainViewState extends State<MainView> {
             label: 'Scores Page',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.save_outlined),
-            label: 'Save Scores',
+            icon: Icon(Icons.settings_outlined),
+            label: 'Settings',
           ),
         ],
       ),
