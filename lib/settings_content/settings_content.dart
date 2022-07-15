@@ -3,6 +3,7 @@ import 'package:flutter_switch/flutter_switch.dart';
 
 bool dateStatus = false;
 bool deleteStatus = false;
+bool darkMode = false;
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
@@ -17,7 +18,7 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: darkMode ? Colors.grey.shade800 : Colors.grey.shade200,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -26,18 +27,18 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Container(
                 height: 100,
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: darkMode ? Colors.grey.shade800 : Colors.grey[300],
                   borderRadius: const BorderRadius.all(Radius.circular(25)),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(0.0, 2.0),
+                      color: darkMode ? Colors.black : Colors.grey.shade600,
+                      offset: const Offset(0.0, 2.0),
                       blurRadius: 12.0,
                       spreadRadius: 1.0,
                     ),
                     BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(0.0, -2.0),
+                      color: darkMode ? Colors.grey.shade600 : Colors.white,
+                      offset: const Offset(0.0, -2.0),
                       blurRadius: 12.0,
                       spreadRadius: 1.0,
                     ),
@@ -49,12 +50,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Text(
                             'SETTINGS',
                             style: TextStyle(
                               fontSize: 24,
                               decoration: TextDecoration.underline,
+                              color: darkMode ? Colors.white : Colors.black87,
                             ),
                           ),
                         ],
@@ -65,9 +67,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SingleRowTitle(
-                              title:
-                                  'Date container color switch \non Score Page'),
+                          Text(
+                            'Date container color switch \non Score Page',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: darkMode ? Colors.white : Colors.black87,
+                            ),
+                          ),
                           FlutterSwitch(
                             width: 50.0,
                             height: 25.0,
@@ -91,9 +97,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const SingleRowTitle(
-                              title:
-                                  'Delete container color switch \non Score Page'),
+                          Text(
+                            'Delete container color switch \non Score Page',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: darkMode ? Colors.white : Colors.black87,
+                            ),
+                          ),
                           FlutterSwitch(
                             width: 50.0,
                             height: 25.0,
@@ -112,6 +122,36 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Settings dark mode',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: darkMode ? Colors.white : Colors.black87,
+                            ),
+                          ),
+                          FlutterSwitch(
+                            width: 50.0,
+                            height: 25.0,
+                            padding: 6.0,
+                            showOnOff: true,
+                            valueFontSize: 12.0,
+                            toggleSize: 12.0,
+                            activeColor: Colors.green,
+                            value: darkMode,
+                            onToggle: (value) {
+                              setState(() {
+                                darkMode = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -120,19 +160,5 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
-  }
-}
-
-class SingleRowTitle extends StatelessWidget {
-  const SingleRowTitle({
-    required this.title,
-    Key? key,
-  }) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(title, textAlign: TextAlign.left);
   }
 }
