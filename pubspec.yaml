@@ -37,6 +37,7 @@ dependencies:
   cloud_firestore: ^3.1.17
   intl: ^0.17.0
   date_format: ^2.0.6
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
