@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-bool status = false;
+bool dateStatus = false;
+bool deleteStatus = false;
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
@@ -67,7 +68,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           const SingleRowTitle(
                               title:
                                   'Date container color switch \non Score Page'),
-                          toggleMethod(),
+                          FlutterSwitch(
+                            width: 50.0,
+                            height: 25.0,
+                            padding: 6.0,
+                            showOnOff: true,
+                            valueFontSize: 12.0,
+                            toggleSize: 12.0,
+                            activeColor: Colors.green,
+                            value: dateStatus,
+                            onToggle: (value) {
+                              setState(() {
+                                dateStatus = value;
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -79,7 +94,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           const SingleRowTitle(
                               title:
                                   'Delete container color switch \non Score Page'),
-                          toggleMethod(),
+                          FlutterSwitch(
+                            width: 50.0,
+                            height: 25.0,
+                            padding: 6.0,
+                            showOnOff: true,
+                            valueFontSize: 12.0,
+                            toggleSize: 12.0,
+                            activeColor: Colors.green,
+                            value: deleteStatus,
+                            onToggle: (value) {
+                              setState(() {
+                                deleteStatus = value;
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -90,24 +119,6 @@ class _SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
-    );
-  }
-
-  FlutterSwitch toggleMethod() {
-    return FlutterSwitch(
-      width: 50.0,
-      height: 25.0,
-      padding: 6.0,
-      showOnOff: true,
-      valueFontSize: 12.0,
-      toggleSize: 12.0,
-      activeColor: Colors.green,
-      value: status,
-      onToggle: (value) {
-        setState(() {
-          status = value;
-        });
-      },
     );
   }
 }

@@ -80,7 +80,9 @@ class DeleteButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 255, 0, 0).withOpacity(0.6),
+        color: deleteStatus
+            ? const Color.fromARGB(160, 238, 238, 238)
+            : const Color.fromARGB(255, 255, 0, 0).withOpacity(0.6),
       ),
       child: TextButton(
         onPressed: () {
@@ -134,7 +136,7 @@ class DateContainer extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(4),
       margin: const EdgeInsets.only(right: 4.0),
-      color: status
+      color: dateStatus
           ? const Color.fromARGB(160, 238, 238, 238)
           : const Color.fromARGB(255, 85, 253, 82).withOpacity(0.6),
       child: Text(
