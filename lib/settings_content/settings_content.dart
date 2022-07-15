@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+bool status = false;
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({
     Key? key,
@@ -11,12 +13,10 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool status = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: status ? Colors.grey.shade800 : Colors.grey.shade200,
+      backgroundColor: Colors.grey.shade200,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -64,23 +64,10 @@ class _SettingsPageState extends State<SettingsPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text('BottomNavigationBar \nlight/dark mode',
-                              textAlign: TextAlign.left),
-                          FlutterSwitch(
-                            width: 50.0,
-                            height: 25.0,
-                            padding: 6.0,
-                            showOnOff: true,
-                            valueFontSize: 12.0,
-                            toggleSize: 12.0,
-                            activeColor: Colors.green,
-                            value: status,
-                            onToggle: (value) {
-                              setState(() {
-                                status = value;
-                              });
-                            },
-                          )
+                          const SingleRowTitle(
+                              title:
+                                  'Date container color switch \non Score Page'),
+                          toggleMethod(),
                         ],
                       ),
                     ),
@@ -92,5 +79,37 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+  }
+
+  FlutterSwitch toggleMethod() {
+    return FlutterSwitch(
+      width: 50.0,
+      height: 25.0,
+      padding: 6.0,
+      showOnOff: true,
+      valueFontSize: 12.0,
+      toggleSize: 12.0,
+      activeColor: Colors.green,
+      value: status,
+      onToggle: (value) {
+        setState(() {
+          status = value;
+        });
+      },
+    );
+  }
+}
+
+class SingleRowTitle extends StatelessWidget {
+  const SingleRowTitle({
+    required this.title,
+    Key? key,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(title, textAlign: TextAlign.left);
   }
 }

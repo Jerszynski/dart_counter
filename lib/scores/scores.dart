@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:flutter/material.dart';
 
 class Scores extends StatefulWidget {
@@ -120,7 +121,9 @@ class DateContainer extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.all(4),
       margin: const EdgeInsets.only(right: 4.0),
-      color: const Color.fromARGB(255, 85, 253, 82).withOpacity(0.6),
+      color: status
+          ? const Color.fromARGB(160, 238, 238, 238)
+          : const Color.fromARGB(255, 85, 253, 82).withOpacity(0.6),
       child: Text(
         title,
         style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
