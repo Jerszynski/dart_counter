@@ -71,6 +71,18 @@ class _SettingsPageState extends State<SettingsPage> {
                         ],
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const SingleRowTitle(
+                              title:
+                                  'Delete container color switch \non Score Page'),
+                          toggleMethod(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

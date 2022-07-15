@@ -55,24 +55,7 @@ class _ScoresState extends State<Scores> {
                       ContainerWithMargin(document['Score1'].toString()),
                       ContainerForData(document['Score2'].toString()),
                       ContainerWithMargin(document['Player2']),
-                      ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                            const Color.fromARGB(255, 255, 0, 0)
-                                .withOpacity(0.6),
-                          ),
-                        ),
-                        onPressed: () {
-                          FirebaseFirestore.instance
-                              .collection('scores')
-                              .doc(document.id)
-                              .delete();
-                        },
-                        child: const Icon(
-                          Icons.highlight_remove_outlined,
-                          color: Colors.black,
-                        ),
-                      )
+                      DeleteButton(document: document)
                     ],
                   ],
                 );
@@ -80,6 +63,36 @@ class _ScoresState extends State<Scores> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({
+    Key? key,
+    required this.document,
+  }) : super(key: key);
+
+  final QueryDocumentSnapshot<Object?> document;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 255, 0, 0).withOpacity(0.6),
+      ),
+      child: TextButton(
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection('scores')
+              .doc(document.id)
+              .delete();
+        },
+        child: const Icon(
+          Icons.highlight_remove_outlined,
+          color: Colors.black,
+        ),
       ),
     );
   }
