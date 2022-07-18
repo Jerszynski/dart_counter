@@ -4,7 +4,7 @@ import 'package:dart_counter/player_container/player_container_content.dart';
 import 'package:dart_counter/players/player1.dart';
 import 'package:dart_counter/players/player2.dart';
 import 'package:dart_counter/scores/scores.dart';
-import 'package:dart_counter/settings_content/settings_content.dart';
+// import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:dart_counter/text_fields/player_one_text_field_content.dart';
 import 'package:dart_counter/text_fields/player_two_text_field_content.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +79,7 @@ class _MainViewState extends State<MainView> {
           if (currentIndex == 1) {
             return const Scores();
           }
-          return const SettingsPage();
+          return Container();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
