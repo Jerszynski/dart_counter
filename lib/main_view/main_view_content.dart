@@ -79,7 +79,10 @@ class _MainViewState extends State<MainView> {
           if (currentIndex == 1) {
             return const Scores();
           }
-          return const SettingsPage();
+          if (currentIndex == 2) {
+            return const SettingsPage();
+          }
+          return Container();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -103,6 +106,10 @@ class _MainViewState extends State<MainView> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined),
             label: 'Settings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Moje konto',
           ),
         ],
       ),
