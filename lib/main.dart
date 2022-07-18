@@ -1,4 +1,6 @@
-import 'package:dart_counter/main_view/main_view_content.dart';
+import 'package:dart_counter/app/home/home_page.dart';
+import 'package:dart_counter/app/login/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -21,6 +23,14 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MainView();
+    return StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: ((context, snapshot) {
+          final user = snapshot.data;
+          if (user == null) {
+            return const LoginPage();
+          }
+          return HomePage(user: user);
+        }));
   }
 }
