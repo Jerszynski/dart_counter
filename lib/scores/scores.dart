@@ -13,6 +13,13 @@ class _ScoresPageContentState extends State<ScoresPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Scores'),
+        centerTitle: true,
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        foregroundColor: Colors.black87,
+      ),
       body: Stack(
         children: [
           Container(

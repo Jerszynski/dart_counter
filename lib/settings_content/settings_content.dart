@@ -18,6 +18,13 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Settings'),
+        centerTitle: true,
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        foregroundColor: Colors.black87,
+      ),
       backgroundColor: darkMode ? Colors.grey.shade800 : Colors.grey.shade200,
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -46,22 +53,22 @@ class _SettingsPageContentState extends State<SettingsPageContent> {
                 ),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'SETTINGS',
-                            style: TextStyle(
-                              fontSize: 24,
-                              decoration: TextDecoration.underline,
-                              color: darkMode ? Colors.white : Colors.black87,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Text(
+                    //         'SETTINGS',
+                    //         style: TextStyle(
+                    //           fontSize: 24,
+                    //           decoration: TextDecoration.underline,
+                    //           color: darkMode ? Colors.white : Colors.black87,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Row(

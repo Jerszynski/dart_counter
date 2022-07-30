@@ -11,19 +11,29 @@ class MyAccountPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Jesteś zalogowany jako $email'),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            child: const Text('Wyloguj'),
-          ),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Account'),
+        centerTitle: true,
+        backgroundColor:
+            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        foregroundColor: Colors.black87,
+      ),
+      backgroundColor: Colors.grey.shade200,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Jesteś zalogowany jako $email'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              child: const Text('Wyloguj'),
+            ),
+          ],
+        ),
       ),
     );
   }
