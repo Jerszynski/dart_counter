@@ -21,24 +21,21 @@ void main() async {
 class RootPage extends StatelessWidget {
   const RootPage({
     Key? key,
-    this.email,
   }) : super(key: key);
 
-  final String? email;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
-      builder: ((context, snapshot) {
+      builder: (context, snapshot) {
         final user = snapshot.data;
         if (user == null) {
           return LoginPage();
         }
         return HomePage(
           user: user,
-          email: email,
         );
-      }),
+      },
     );
   }
 }

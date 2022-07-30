@@ -5,16 +5,16 @@ bool dateStatus = false;
 bool deleteStatus = false;
 bool darkMode = false;
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({
+class SettingsPageContent extends StatefulWidget {
+  const SettingsPageContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<SettingsPage> createState() => _SettingsPageState();
+  State<SettingsPageContent> createState() => _SettingsPageContentState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageContentState extends State<SettingsPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

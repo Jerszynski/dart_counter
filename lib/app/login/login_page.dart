@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      isCreatingAccount == true;
+                      isCreatingAccount = true;
                     });
                   },
                   child: const Text('Utwórz konto'),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      isCreatingAccount == false;
+                      isCreatingAccount = false;
                     });
                   },
                   child: const Text('Masz już konto?'),

@@ -7,16 +7,16 @@ import 'package:dart_counter/text_fields/player_one_text_field_content.dart';
 import 'package:dart_counter/text_fields/player_two_text_field_content.dart';
 import 'package:flutter/material.dart';
 
-class MainView extends StatefulWidget {
-  const MainView({
+class MainViewPageContent extends StatefulWidget {
+  const MainViewPageContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<MainView> createState() => _MainViewState();
+  State<MainViewPageContent> createState() => _MainViewPageContentState();
 }
 
-class _MainViewState extends State<MainView> {
+class _MainViewPageContentState extends State<MainViewPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,14 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:flutter/material.dart';
 
-class Scores extends StatefulWidget {
-  const Scores({Key? key}) : super(key: key);
+class ScoresPageContent extends StatefulWidget {
+  const ScoresPageContent({Key? key}) : super(key: key);
 
   @override
-  State<Scores> createState() => _ScoresState();
+  State<ScoresPageContent> createState() => _ScoresPageContentState();
 }
 
-class _ScoresState extends State<Scores> {
+class _ScoresPageContentState extends State<ScoresPageContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +47,8 @@ class _ScoresState extends State<Scores> {
                     childAspectRatio: 1.6,
                     mainAxisSpacing: 2,
                   ),
-                  padding: const EdgeInsets.all(15),
+                  padding:
+                      const EdgeInsets.only(top: 50.0, left: 25, right: 25),
                   children: <Widget>[
                     for (final document in documents) ...[
                       DateContainer(document['Date']),
