@@ -11,9 +11,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(
-    const MaterialApp(
+    MaterialApp(
       title: 'Simple Dart Counter for 2 ppl.',
-      home: RootPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.blueGrey,
+      ),
+      home: const RootPage(),
     ),
   );
 }

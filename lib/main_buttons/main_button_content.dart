@@ -24,7 +24,7 @@ class MainButton extends StatelessWidget {
       height: 36,
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: Colors.black87,
+          foregroundColor: Colors.black87,
         ),
         onPressed: onPressed,
         child: Text(title),

@@ -1,6 +1,6 @@
 import 'package:dart_counter/main_view/main_view_content.dart';
 import 'package:dart_counter/my_account/my_account_content.dart';
-import 'package:dart_counter/scores/scores.dart';
+import 'package:dart_counter/scores/scores_page.dart';
 import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage> {
             currentIndex = newIndex;
           });
         },
-        backgroundColor:
-            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+        selectedItemColor: Colors.white.withOpacity(0.8),
+        backgroundColor: Colors.blueGrey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.people_outline),

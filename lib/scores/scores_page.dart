@@ -16,9 +16,6 @@ class _ScoresPageContentState extends State<ScoresPageContent> {
       appBar: AppBar(
         title: const Text('Scores'),
         centerTitle: true,
-        backgroundColor:
-            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-        foregroundColor: Colors.black87,
       ),
       body: Stack(
         children: [
@@ -36,13 +33,17 @@ class _ScoresPageContentState extends State<ScoresPageContent> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
-                  return const Text('Wystąpił nieoczekiwany problem');
+                  return const Text('Wystąpił nieoczekiwany problem.');
                 }
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Text(
-                    'Prosze czekać, trwa ładowanie danych',
-                    style: TextStyle(color: Colors.white),
+                  return const Expanded(
+                    child: Center(
+                      child: Text(
+                        'Prosze czekać, trwa ładowanie danych.',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   );
                 }
 

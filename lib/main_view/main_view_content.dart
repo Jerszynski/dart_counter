@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_counter/main_buttons/main_button_content.dart';
 import 'package:dart_counter/player_container/player_container_content.dart';
-import 'package:dart_counter/players/player1.dart';
-import 'package:dart_counter/players/player2.dart';
+import 'package:dart_counter/players/player1_page.dart';
+import 'package:dart_counter/players/player2_page.dart';
 import 'package:dart_counter/text_fields/player_one_text_field_content.dart';
 import 'package:dart_counter/text_fields/player_two_text_field_content.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +23,6 @@ class _MainViewPageContentState extends State<MainViewPageContent> {
       appBar: AppBar(
         title: const Text('Dart Counter'),
         centerTitle: true,
-        backgroundColor:
-            const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-        foregroundColor: Colors.black87,
       ),
       body: Stack(
         children: [

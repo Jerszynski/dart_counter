@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 
-int player1Counter = 0;
-int games1Counter = 0;
+int player2Counter = 0;
+int games2Counter = 0;
 
-class Player1 extends StatefulWidget {
-  const Player1({Key? key}) : super(key: key);
+class Player2 extends StatefulWidget {
+  const Player2({Key? key}) : super(key: key);
 
   @override
-  Player1State createState() => Player1State();
+  Player2State createState() => Player2State();
 }
 
-class Player1State extends State<Player1> {
+class Player2State extends State<Player2> {
   void incrementButton() {
     setState(() {
-      player1Counter++;
-      if (player1Counter == 4) {
-        games1Counter++;
-        player1Counter = 0;
+      player2Counter++;
+      if (player2Counter == 4) {
+        games2Counter++;
+        player2Counter = 0;
       }
     });
   }
 
   void decrementButton() {
     setState(() {
-      player1Counter != 0 ? player1Counter-- : player1Counter = 0;
+      player2Counter != 0 ? player2Counter-- : player2Counter = 0;
     });
   }
 
   void resetButton() {
     setState(() {
-      player1Counter = 0;
-      games1Counter = 0;
+      player2Counter = 0;
+      games2Counter = 0;
     });
   }
 
   final textButtonStyle = TextButton.styleFrom(
-    primary: Colors.black,
+    foregroundColor: Colors.black,
     textStyle: const TextStyle(fontSize: 16),
   );
 
@@ -73,11 +73,11 @@ class Player1State extends State<Player1> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Games: $games1Counter',
+              'Games: $games2Counter',
               style: textStyle,
             ),
             Text(
-              'Sets: $player1Counter',
+              'Sets: $player2Counter',
               style: textStyle,
             ),
           ],
