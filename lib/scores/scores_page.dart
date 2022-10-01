@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_counter/scores/cubit/scores_cubit.dart';
 import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScoresPageContent extends StatefulWidget {
   const ScoresPageContent({Key? key}) : super(key: key);
@@ -26,49 +28,46 @@ class _ScoresPageContentState extends State<ScoresPageContent> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('scores')
-                  .orderBy('Date', descending: true)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return const Text('Wystąpił nieoczekiwany problem.');
-                }
+            child: BlocProvider(
+              create: (context) => ScoresCubit()..start(),
+              child: BlocBuilder<ScoresCubit, ScoresState>(
+                builder: (context, state) {
+                  if (state.errorMessage.isNotEmpty) {
+                    return Text(
+                      'Something went wrong: ${state.errorMessage}',
+                    );
+                  }
 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Expanded(
-                    child: Center(
-                      child: Text(
-                        'Prosze czekać, trwa ładowanie danych.',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                  if (state.isLoading == true) {
+                    return const Expanded(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+
+                  final documents = state.documents;
+
+                  return GridView(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 6,
+                      childAspectRatio: 1.6,
+                      mainAxisSpacing: 2,
                     ),
-                  );
-                }
-
-                final documents = snapshot.data!.docs;
-
-                return GridView(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 6,
-                    childAspectRatio: 1.6,
-                    mainAxisSpacing: 2,
-                  ),
-                  padding:
-                      const EdgeInsets.only(top: 50.0, left: 25, right: 25),
-                  children: <Widget>[
-                    for (final document in documents) ...[
-                      DateContainer(document['Date']),
-                      ContainerForData(document['Player1']),
-                      ContainerWithMargin(document['Score1'].toString()),
-                      ContainerForData(document['Score2'].toString()),
-                      ContainerWithMargin(document['Player2']),
-                      DeleteButton(document: document)
+                    padding:
+                        const EdgeInsets.only(top: 50.0, left: 25, right: 25),
+                    children: <Widget>[
+                      for (final document in documents) ...[
+                        DateContainer(document['Date']),
+                        ContainerForData(document['Player1']),
+                        ContainerWithMargin(document['Score1'].toString()),
+                        ContainerForData(document['Score2'].toString()),
+                        ContainerWithMargin(document['Player2']),
+                        DeleteButton(document: document)
+                      ],
                     ],
-                  ],
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],
