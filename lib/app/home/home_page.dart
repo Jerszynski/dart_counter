@@ -51,11 +51,11 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.people_outline),
-            label: 'Main Page',
+            label: 'Main',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.scoreboard_outlined),
-            label: 'Scores Page',
+            label: 'Scores',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined),
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
-            label: 'Moje konto',
+            label: 'My Account',
           ),
         ],
       ),

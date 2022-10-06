@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:dart_counter/app/cubit/root_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 bool dateStatus = false;
 bool deleteStatus = false;
@@ -54,7 +55,7 @@ class MyAccountPageContent extends StatelessWidget {
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
-                          FirebaseAuth.instance.signOut();
+                          context.read<RootCubit>().signOut();
                         },
                         child: const Text('Wyloguj'),
                       ),
@@ -67,31 +68,5 @@ class MyAccountPageContent extends StatelessWidget {
         ),
       ),
     );
-
-    // Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('My Account'),
-    //     centerTitle: true,
-    //     backgroundColor:
-    //         const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
-    //     foregroundColor: Colors.black87,
-    //   ),
-    //   backgroundColor: Colors.grey.shade200,
-    //   body: Center(
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: [
-    //         Text('Jesteś zalogowany jako $email'),
-    //         const SizedBox(height: 20),
-    //         ElevatedButton(
-    //           onPressed: () {
-    //             FirebaseAuth.instance.signOut();
-    //           },
-    //           child: const Text('Wyloguj'),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }
