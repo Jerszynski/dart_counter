@@ -59,10 +59,9 @@ class _LoginPageState extends State<LoginPage> {
                   } else {
                     // logowanie
                     try {
-                      await FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: widget.emailController.text,
-                        password: widget.passwordController.text,
-                      );
+                      context.read<RootCubit>().logIn(
+                          email: widget.emailController.text,
+                          password: widget.passwordController.text);
                     } catch (error) {
                       setState(() {
                         errorMessage = error.toString();

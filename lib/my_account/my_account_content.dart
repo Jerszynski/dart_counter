@@ -49,7 +49,7 @@ class MyAccountPageContent extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Jesteś zalogowany jako $email',
+                        'You are logged in as $email',
                         style: TextStyle(
                           color: darkMode ? Colors.white : Colors.black,
                         ),
