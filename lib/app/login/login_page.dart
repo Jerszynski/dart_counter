@@ -1,5 +1,7 @@
+import 'package:dart_counter/app/cubit/root_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -26,9 +28,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(isCreatingAccount == true
-                  ? 'Zarejestruj się'
-                  : 'Zaloguj się'),
+              Text(isCreatingAccount == true ? 'Registration' : 'Log in'),
               const SizedBox(height: 20),
               TextField(
                 controller: widget.emailController,
@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               TextField(
                 controller: widget.passwordController,
-                decoration: const InputDecoration(hintText: 'Hasło'),
+                decoration: const InputDecoration(hintText: 'Password'),
                 obscureText: true,
               ),
               const SizedBox(height: 20),
@@ -47,11 +47,10 @@ class _LoginPageState extends State<LoginPage> {
                   if (isCreatingAccount == true) {
                     //rejestracja
                     try {
-                      await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                        email: widget.emailController.text,
-                        password: widget.passwordController.text,
-                      );
+                      context.read<RootCubit>().registration(
+                            email: widget.emailController.text,
+                            password: widget.passwordController.text,
+                          );
                     } catch (error) {
                       setState(() {
                         errorMessage = error.toString();
@@ -71,9 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                     }
                   }
                 },
-                child: Text(isCreatingAccount == true
-                    ? 'Zarejestruj się'
-                    : 'Zaloguj się'),
+                child:
+                    Text(isCreatingAccount == true ? 'Registration' : 'Log in'),
               ),
               const SizedBox(height: 20),
               if (isCreatingAccount == false) ...[
@@ -83,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = true;
                     });
                   },
-                  child: const Text('Utwórz konto'),
+                  child: const Text('Create account'),
                 ),
               ],
               if (isCreatingAccount == true) ...[
@@ -93,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount = false;
                     });
                   },
-                  child: const Text('Masz już konto?'),
+                  child: const Text('Already have an account?'),
                 ),
               ]
             ],

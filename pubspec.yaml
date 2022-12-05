@@ -33,12 +33,12 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  firebase_core: ^1.17.1
-  cloud_firestore: ^3.1.17
+  firebase_core: ^2.3.0
+  cloud_firestore: ^4.1.0
   intl: ^0.17.0
   date_format: ^2.0.6
   flutter_switch: ^0.3.2
-  firebase_auth: ^3.4.2
+  firebase_auth: ^4.1.4
   flutter_bloc: ^8.1.1
 
 dev_dependencies:
@@ -51,7 +51,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  flutter_launcher_icons: ^0.9.3
+  flutter_launcher_icons: ^0.11.0
 
 flutter_icons:
   android: "launcher_icon"

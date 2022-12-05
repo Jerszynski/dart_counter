@@ -11,7 +11,8 @@ void main() async {
   );
   runApp(
     MaterialApp(
-      title: 'Simple Dart Counter for 2 ppl.',
+      debugShowCheckedModeBanner: false,
+      title: 'Simple Dart Counter',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),

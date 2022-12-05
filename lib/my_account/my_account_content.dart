@@ -1,10 +1,7 @@
 import 'package:dart_counter/app/cubit/root_cubit.dart';
+import 'package:dart_counter/settings_content/settings_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-bool dateStatus = false;
-bool deleteStatus = false;
-bool darkMode = false;
 
 class MyAccountPageContent extends StatelessWidget {
   const MyAccountPageContent({
@@ -51,13 +48,23 @@ class MyAccountPageContent extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Jesteś zalogowany jako $email'),
+                      Text(
+                        'Jesteś zalogowany jako $email',
+                        style: TextStyle(
+                          color: darkMode ? Colors.white : Colors.black,
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       ElevatedButton(
                         onPressed: () {
                           context.read<RootCubit>().signOut();
                         },
-                        child: const Text('Wyloguj'),
+                        child: Text(
+                          'Wyloguj',
+                          style: TextStyle(
+                            color: darkMode ? Colors.white : Colors.black,
+                          ),
+                        ),
                       ),
                     ],
                   ),
